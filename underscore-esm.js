@@ -104,9 +104,9 @@ function isElement(obj) {
 // Internal function for creating a `toString`-based type tester.
 function tagTester(name) {
   var tag = '[object ' + name + ']';
-  return function(obj) {
-    return toString.call(obj) === tag;
-  };
+  return function (obj) {
+    return toString.call(obj) === tag
+  }
 }
 
 var isString = tagTester('String');
@@ -296,14 +296,15 @@ function isEmpty(obj) {
 
 // Returns whether an object has a given set of `key:value` pairs.
 function isMatch(object, attrs) {
-  var _keys = keys(attrs), length = _keys.length;
-  if (object == null) return !length;
+  var _keys = keys(attrs),
+    length = _keys.length;
+  if (object == null) return !length
   var obj = Object(object);
   for (var i = 0; i < length; i++) {
     var key = _keys[i];
-    if (attrs[key] !== obj[key] || !(key in obj)) return false;
+    if (attrs[key] !== obj[key] || !(key in obj)) return false
   }
-  return true;
+  return true
 }
 
 // If Underscore is called as a function, it returns a wrapped object that can
@@ -1571,15 +1572,15 @@ function sortBy(obj, iteratee, context) {
 
 // An internal function used for aggregate "group by" operations.
 function group(behavior, partition) {
-  return function(obj, iteratee, context) {
+  return function (obj, iteratee, context) {
     var result = partition ? [[], []] : {};
     iteratee = cb(iteratee, context);
-    each(obj, function(value, index) {
+    each(obj, function (value, index) {
       var key = iteratee(value, index, obj);
       behavior(result, value, key);
     });
-    return result;
-  };
+    return result
+  }
 }
 
 // Groups the object's values by a criterion. Pass either a string attribute
@@ -1597,8 +1598,9 @@ var indexBy = group(function(result, value, key) {
 // Counts instances of an object that group by a certain criterion. Pass
 // either a string attribute to count by, or a function that returns the
 // criterion.
-var countBy = group(function(result, value, key) {
-  if (has$1(result, key)) result[key]++; else result[key] = 1;
+var countBy = group(function (result, value, key) {
+  if (has$1(result, key)) result[key]++;
+  else result[key] = 1;
 });
 
 // Split a collection into two arrays: one whose elements all pass the given
