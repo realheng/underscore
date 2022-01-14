@@ -1,5 +1,5 @@
-import createEscaper from './_createEscaper.js';
-import escapeMap from './_escapeMap.js';
+import createEscaper from './_createEscaper.js'
+import escapeMap from './_escapeMap.js'
 
 // Function for escaping strings to HTML interpolation.
-export default createEscaper(escapeMap);
+export default createEscaper(escapeMap)

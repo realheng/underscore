@@ -550,7 +550,7 @@ function invert(obj) {
   for (var i = 0, length = _keys.length; i < length; i++) {
     result[obj[_keys[i]]] = _keys[i];
   }
-  return result;
+  return result
 }
 
 // Return a sorted list of the function names available on the object.
@@ -634,7 +634,7 @@ function tap(obj, interceptor) {
 // Normalize a (deep) property `path` to array.
 // Like `_.iteratee`, this function can be customized.
 function toPath$1(path) {
-  return isArray(path) ? path : [path];
+  return isArray(path) ? path : [path]
 }
 _$1.toPath = toPath$1;
 
@@ -648,10 +648,10 @@ function toPath(path) {
 function deepGet(obj, path) {
   var length = path.length;
   for (var i = 0; i < length; i++) {
-    if (obj == null) return void 0;
+    if (obj == null) return void 0
     obj = obj[path[i]];
   }
-  return length ? obj : void 0;
+  return length ? obj : void 0
 }
 
 // Get the value of the (deep) property on `path` from `object`.
@@ -695,9 +695,9 @@ function matcher(attrs) {
 // properties down the given `path`, specified as an array of keys or indices.
 function property(path) {
   path = toPath(path);
-  return function(obj) {
-    return deepGet(obj, path);
-  };
+  return function (obj) {
+    return deepGet(obj, path)
+  }
 }
 
 // Internal function that returns an efficient (for current engines) version
@@ -1023,7 +1023,7 @@ function flatten$1(input, depth, strict, output) {
   if (!depth && depth !== 0) {
     depth = Infinity;
   } else if (depth <= 0) {
-    return output.concat(input);
+    return output.concat(input)
   }
   var idx = output.length;
   for (var i = 0, length = getLength(input); i < length; i++) {
@@ -1034,14 +1034,15 @@ function flatten$1(input, depth, strict, output) {
         flatten$1(value, depth - 1, strict, output);
         idx = output.length;
       } else {
-        var j = 0, len = value.length;
+        var j = 0,
+          len = value.length;
         while (j < len) output[idx++] = value[j++];
       }
     } else if (!strict) {
       output[idx++] = value;
     }
   }
-  return output;
+  return output
 }
 
 // Bind a number of an object's methods to that object. Remaining arguments
@@ -1445,7 +1446,7 @@ var invoke = restArguments(function(obj, path, args) {
 
 // Convenience version of a common use case of `_.map`: fetching a property.
 function pluck(obj, key) {
-  return map(obj, property(key));
+  return map(obj, property(key))
 }
 
 // Convenience version of a common use case of `_.filter`: selecting only
@@ -1548,21 +1549,24 @@ function shuffle(obj) {
 function sortBy(obj, iteratee, context) {
   var index = 0;
   iteratee = cb(iteratee, context);
-  return pluck(map(obj, function(value, key, list) {
-    return {
-      value: value,
-      index: index++,
-      criteria: iteratee(value, key, list)
-    };
-  }).sort(function(left, right) {
-    var a = left.criteria;
-    var b = right.criteria;
-    if (a !== b) {
-      if (a > b || a === void 0) return 1;
-      if (a < b || b === void 0) return -1;
-    }
-    return left.index - right.index;
-  }), 'value');
+  return pluck(
+    map(obj, function (value, key, list) {
+      return {
+        value: value,
+        index: index++,
+        criteria: iteratee(value, key, list),
+      }
+    }).sort(function (left, right) {
+      var a = left.criteria;
+      var b = right.criteria;
+      if (a !== b) {
+        if (a > b || a === void 0) return 1
+        if (a < b || b === void 0) return -1
+      }
+      return left.index - right.index
+    }),
+    'value'
+  )
 }
 
 // An internal function used for aggregate "group by" operations.
@@ -1660,9 +1664,9 @@ function initial(array, n, guard) {
 // Get the first element of an array. Passing **n** will return the first N
 // values in the array. The **guard** check allows it to work with `_.map`.
 function first(array, n, guard) {
-  if (array == null || array.length < 1) return n == null || guard ? void 0 : [];
-  if (n == null || guard) return array[0];
-  return initial(array, array.length - n);
+  if (array == null || array.length < 1) return n == null || guard ? void 0 : []
+  if (n == null || guard) return array[0]
+  return initial(array, array.length - n)
 }
 
 // Returns everything but the first entry of the `array`. Especially useful on
